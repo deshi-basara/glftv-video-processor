@@ -170,7 +170,7 @@ class Controller(object):
         """Ask the user if he wants a 2-pass convertion"""
         choosing = True
         while choosing:
-            input_pass = input("2-pass Conversion (y/n)> ")
+            input_pass = input("2-pass Encoding (y/n)> ")
             # check if the user entered a valid input
             if input_pass == "y":
                 self.two_pass = True
@@ -214,7 +214,7 @@ class Controller(object):
             # foreach profile, create a new model and add a job to the queue
             for profile in self.profiles.profiles:
                 profile_model = Model(
-                    self.path, self.input_video, self.output_video, profile)
+                    self.path, self.input_video, self.output_video, profile, self.two_pass)
                 profile_cmd = profile_model.build_cmd()
                 # add each cmd to the queue
                 for ffmpeg_cmd in profile_cmd:
